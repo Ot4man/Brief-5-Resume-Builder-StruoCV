@@ -1,0 +1,23 @@
+{
+  "name": "struocv",
+  "version": "1.0.0",
+  "description": "**StruoCV** est une application web interactive permettant aux utilisateurs de **créer, personnaliser et télécharger** leur CV professionnel en quelques étapes simples.  \r Le projet met l’accent sur une **expérience utilisateur fluide et moderne**, avec une interface dynamique et intuitive.",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ot4man/Brief-5-Resume-Builder-StruoCV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ot4man/Brief-5-Resume-Builder-StruoCV/issues"
+  },
+  "homepage": "https://github.com/Ot4man/Brief-5-Resume-Builder-StruoCV#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "tailwindcss": "^4.1.16"
+  }
+}
