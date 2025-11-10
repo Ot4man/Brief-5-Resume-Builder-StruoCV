@@ -28,7 +28,7 @@ function showStep() {
   } else {
     nextBtn.textContent = "Next";
   }
- if (currentStep === 0) {
+  if (currentStep === 0) {
     // optionalFields.classList.remove("hidden");
     addFieldBtn.classList.remove("hidden");
     removeFieldBtn.classList.remove("hidden");
@@ -37,21 +37,18 @@ function showStep() {
     addFieldBtn.classList.add("hidden");
     removeFieldBtn.classList.add("hidden");
   }
-
-//progress bar update just the rounded
-// steper.forEach((c, i) => {
-//   if (i <= currentStep) {
-//     c.classList.add("bg-blue-600", "text-white");
-//     c.classList.remove("bg-gray-300", "text-gray-700");
-//   } else {
-//     c.classList.add("bg-gray-300", "text-gray-700");
-//     c.classList.remove("bg-blue-600", "text-white");
-//   }
-// });
-//const progressPercent = ((currentStep + 1) / steps.length) * 100;
-  //progress.style.width = progressPercent + "%";
+  steper.forEach((c,index) => {
+    if (index <= currentStep){
+      c.classList.add("bg-blue-600", "text-white");
+      c.classList.remove("bg-gray-300", "text-gray-700");
+    }else{
+      c.classList.add("bg-gray-300", "text-gray-700");
+      c.classList.add("bg-blue-600", "text-white");    
+    }
+  });
+const progresspercent =((currentStep +1 ) / (steps.length)) * 100;
+progress.style.width = progresspercent + "%";
 }
-
 
 // Next bton click
 nextBtn.addEventListener("click", () => {
