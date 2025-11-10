@@ -1,14 +1,16 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Resume Builder StruoCV</title>
-        <link rel="stylesheet" href="./assets/css/style.css">
-        <link href="assets/css/output.css" rel="stylesheet">
-    </head>
-    <body class="bg-gray-100">
-            <!-- Container -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder StruoCV</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="assets/css/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <!-- Container -->
     <div class="max-w-7xl mx-auto mt-10 shadow-lg rounded-lg p-8">
         <!-- Header -->
         <h1 class="text-3xl  text-center text- mb-8">
@@ -16,70 +18,135 @@
         </h1>
 
         <!-- Progress Bar -->
-        <div class="w-full bg-gray-300 rounded-full h-2.5 mb-10">
-            <div id="progress" class="bg-blue-500 h-2.5 rounded-full w-1/5"></div>
+        <div class="w- bg-green-300 rounded-full h-3 mb-6">
+            <div id="progress" class="bg-blue-500 h-3 rounded-full w-1/5 transition-all duration-300"></div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Stepper -->
-        <div class="flex justify-between mb-8">
+        <div class="flex justify-evenly mb-8">
             <div class="text-center">
-                <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-blue-600 text-white">
+                <div id="step1"
+                    class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-blue-600 text-white">
                     1
                 </div>
                 <p class="mt-2 text-sm font-medium text-gray-600">Personal Info</p>
             </div>
             <div class="text-center">
-                <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
+                <div id="step2"
+                    class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
                     2
                 </div>
                 <p class="mt-2 text-sm font-medium text-gray-600">Education</p>
             </div>
             <div class="text-center">
-                <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
+                <div id="step3"
+                    class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
                     3
                 </div>
                 <p class="mt-2 text-sm font-medium text-gray-600">Experience</p>
             </div>
             <div class="text-center">
-                <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
+                <div id="step4"
+                    class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
                     4
                 </div>
                 <p class="mt-2 text-sm font-medium text-gray-600">Skills</p>
             </div>
             <div class="text-center">
-                <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
+                <div id="step5"
+                    class="w-10 h-10 mx-auto flex items-center justify-center rounded-full bg-gray-300 text-gray-700">
                     5
                 </div>
                 <p class="mt-2 text-sm font-medium text-gray-600">Preview</p>
             </div>
         </div>
 
+        <!-- Step Forms -->
+        <form id="cvForm">
+            <!-- Step 1: Personal Info -->
+            <div class="step active">
+                <h2 class="text-2xl font-semibold mb-4">Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="First Name" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="Familly Name" class="border rounded-lg p-2 w-full" />
+                    <input type="email" placeholder="Email" class="border rounded-lg p-2 w-full" />
+                    <input type="tel" placeholder="Phone" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="Address" class="border rounded-lg p-2 w-full" />
+                    <input type="number" placeholder="Code postal" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="City/Country" class="border p-2 w-full rounded">
+
+                </div>
+            </div>
+            <!-- Optional fields -->
+            <div id="optionalFields" class="hidden space-y-3 mt-4">
+                <input type="text" placeholder="Place of birth" class="border p-2 w-full rounded">
+                <input type="date" placeholder="Date de naissance" class="border p-2 w-full rounded">
+                <input type="url" placeholder="LinkedIn " class="border p-2 w-full rounded">
+                <input type="url" placeholder="Portfolio Website" class="border p-2 w-full rounded">
+                <input type="url" placeholder="Other Social Media (GitHub, Twitter...)"
+                    class="border p-2 w-full rounded">
+            </div>
+            <!-- Button -->
+            <button id="addFieldBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded mt-4">
+                ⊕ Add More Info
+            </button>
+            <button id="removeFieldBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded mt-4">
+                ⊖ Remove More Info
+            </button>
+
+            <!-- Step 2: Education -->
+            <div class="step hidden">
+                <h2 class="text-2xl font-semibold mb-4">Education</h2>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Institution Name" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="Degree" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="Year of Graduation" class="border rounded-lg p-2 w-full" />
+                </div>
+            </div>
+
+            <!-- Step 3: Experience -->
+            <div class="step hidden">
+                <h2 class="text-2xl font-semibold mb-4">Work Experience</h2>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Company Name" class="border rounded-lg p-2 w-full" />
+                    <input type="text" placeholder="Job Title" class="border rounded-lg p-2 w-full" />
+                    <textarea placeholder="Job Description" class="border rounded-lg p-2 w-full"></textarea>
+                </div>
+            </div>
+            <!-- Step 4: Skills -->
+            <div class="step hidden">
+                <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+                <input type="text" placeholder="Enter skills" class="border rounded-lg p-2 w-full" />
+            </div>
+
+            <!-- Step 5: Preview -->
+            <div class="step hidden">
+                <h2 class="text-2xl font-semibold mb-4">Preview Your CV</h2>
+                <div class="border rounded-lg p-4 bg-gray-50">
+                    <p class="text-gray-700">preview </p>
+                </div>
+            </div>
+
+            <!-- --- -->
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-8">
+                <button type="button" id="prevBtn" class="bg-gray-400 text-white px-4 py-2 rounded disabled:opacity-50">
+                    Previous
+                </button>
+                <button type="button" id="nextBtn" class="bg-blue-600 text-white px-4 py-2 rounded">
+                    Next
+                </button>
+            </div>
+        </form>
+    </div>
+    </form>
 
 
 
-        <!-- Link to app.js -->
-        
-        <script src="./assets/js/app.js"></script>
-    </body>
-    </html>
+    <!-- Link to app.js -->
 
-    
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
