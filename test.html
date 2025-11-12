@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Dynamic Education Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-semibold mb-4">Personal Information</h2>
+
+        <!-- Basic Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="flex flex-col">
+                <label for="firstName" class="text-gray-700 font-medium mb-1">First Name</label>
+                <input id="firstName" type="text" placeholder="First Name" class="border rounded-lg p-2 w-full" required>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="familyName" class="text-gray-700 font-medium mb-1">Family Name</label>
+                <input id="familyName" type="text" placeholder="Family Name" class="border rounded-lg p-2 w-full" required>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="border-t pt-4">
+            <h3 class="text-xl font-semibold mb-3">Education</h3>
+
+            <!-- Container for dynamic education entries -->
+            <div id="educationList" class="space-y-3"></div>
+
+            <!-- Add Education Button -->
+            <button id="addEducationBtn" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        + Add Education
+      </button>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-6 text-right">
+            <button id="submitForm" class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700 transition">
+        Submit
+      </button>
+        </div>
+    </div>
+
+    <script>
+        const addBtn = document.getElementById('addEducationBtn');
+        const educationList = document.getElementById('educationList');
+        const submitBtn = document.getElementById('submitForm');
+
+        // Add new education block
+        addBtn.addEventListener('click', () => {
+            const div = document.createElement('div');
+            div.classList.add('border', 'p-3', 'rounded', 'bg-gray-50', 'flex', 'flex-col', 'gap-2', 'relative');
+
+            div.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <input type="text" placeholder="School/University"
+                 class="border p-2 rounded w-full school" required>
+          <input type="text" placeholder="Degree / Program"
+                 class="border p-2 rounded w-full degree" required>
+          <input type="text" placeholder="Year (e.g. 2020-2024)"
+                 class="border p-2 rounded w-full year" required>
+        </div>
+        <button class="deleteBtn text-red-600 hover:text-red-800 self-end mt-1 text-sm">
+          Delete
+        </button>
+      `;
+            educationList.appendChild(div);
+        });
+
+        // Delete education block
+        educationList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('deleteBtn')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        // Submit form
+        submitBtn.addEventListener('click', () => {
+            const firstName = document.getElementById('firstName').value.trim();
+            const familyName = document.getElementById('familyName').value.trim();
+            const educationItems = document.querySelectorAll('#educationList > div');
+
+            const educationData = Array.from(educationItems).map(item => ({
+                school: item.querySelector('.school').value.trim(),
+                degree: item.querySelector('.degree').value.trim(),
+                year: item.querySelector('.year').value.trim()
+            }));
+
+            const formData = {
+                firstName,
+                familyName,
+                education: educationData
+            };
+
+            // Show result in console
+            console.log('Form Data:', formData);
+            alert('Form submitted! Check the console for details.');
+        });
+    </script>
+
+</body>
+
+</html>
