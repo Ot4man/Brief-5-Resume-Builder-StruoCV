@@ -47,7 +47,8 @@
                 c.classList.remove("bg-blue-600", "text-white");
             }
         });
-        const progresspercent = ((currentStep + 1) / (steps.length)) * 100;
+        const progresspercent = ((currentStep + 1) / steps.length) * 100;
+        console.log(steps.length)
         progress.style.width = progresspercent + "%";
     }
     //Regex
