@@ -79,11 +79,6 @@
                 <p class="mt-2 text-sm font-medium text-gray-600">Perview</p>
             </div>
 
-
-
-
-
-
         </div>
 
         <!-- Step Forms -->
@@ -164,6 +159,7 @@
                     <input id="social" type="text" placeholder="Coding Game , Let Code , Instagram..." class="border rounded-lg p-2 w-full" />
                 </div>
             </div>
+
             <!-- Button -->
             <button id="addFieldBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-full mt-4">
                     ⊕ Add More Info
@@ -215,14 +211,12 @@
                 </div>
                 <!-- Save & Delete & Edit buttons -->
                 <div class="mt-8">
-                    <button type="button" id="save" class="bg-blue-700 text-white px-4 py-2 rounded-full">
+                    <button type="button" id="saveeducation" class="bg-blue-700 text-white px-4 py-2 rounded-full">
                             Save
                         </button>
-                    <button type="button" id="delete" class="bg-red-700 text-white px-4 py-2 rounded-full">
-                            Delete
-                        </button>
+
                 </div>
-                <div class="dispal_education"></div>
+                <div class="dispal_education" id="dispal_education"></div>
             </div>
 
             <!-- Step 3: Experience -->
@@ -247,41 +241,88 @@
                     </div>
                     <!-- End Date -->
                     <div class="flex flex-col">
-                        <label for="endDate" class="text-gray-700 font-medium mb-1">estart Date</label>
+                        <label for="endDate" class="text-gray-700 font-medium mb-1">end Date</label>
                         <input id="endDate" type="date" class="border rounded-lg p-2 w-full" />
                     </div>
 
-                    <textarea placeholder="Job Description" class="border rounded-lg p-2 w-full"></textarea>
-                    <!-- Quilll js box -->
-                    <div id="jobdescription" class="border rounded-lg p-2 w-full">
-                        Job Description</div>
+                    <!-- Job Description (Quill Editor) -->
+                    <div class="flex flex-col">
+                        <label for="jobdescription" class="text-gray-700 font-medium mb-1">Job Description</label>
+                        <div id="jobdescription" class="border rounded-lg w-full min-h-[150px] bg-white"></div>
+                    </div>
                 </div>
             </div>
             <!-- Step 4: Skills -->
             <div class="step hidden">
                 <h2 class="text-2xl font-semibold mb-4">Skills</h2>
-                <input type="text" placeholder="Enter skills" class="border rounded-lg p-2 w-full" />
+                <div class="flex items-center gap-2 mb-4">
+                    <input id="skillInput" type="text" placeholder="Enter a skill (e.g., JavaScript, Communication)" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+                    <button id="addSkillBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-full">+ Add</button>
+                </div>
+                <!-- Skills List -->
+                <div id="skillsList" class="flex flex-wrap gap-2 mt-4">
+
+                </div>
             </div>
 
             <!-- Step 5: Certfication -->
             <div class="step hidden">
-                <h2 class="text-2xl font-semibold mb-4">Your certife</h2>
-                <div class="border rounded-lg p-4 bg-gray-50">
-                    <p class="text-gray-700">Certfication</p>
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800">Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                    <input id="certName" type="text" placeholder="Certification Name" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+
+                    <input id="certOrg" type="text" placeholder="Issued by (e.g., Google, Coursera)" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+
+                    <input id="certDate" type="date" placeholder="Date" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+                </div>
+
+                <!-- Add Button -->
+                <button id="addCertBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-full">+ Add Certification</button>
+
+                <!-- Certification List -->
+                <div id="certList" class="mt-6 space-y-3">
+                    <!-- Certifications will appear here -->
                 </div>
             </div>
             <!-- step 6 :Languages -->
             <div class="step hidden">
-                <h2 class="text-2xl font-semibold mb-4">Your languages</h2>
-                <div class="border rounded-lg p-4 bg-gray-50">
-                    <p class="text-gray-700">arabe....</p>
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800">Languages</h2>
+
+                <!-- Input Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                    <input id="langName" type="text" placeholder="Language (e.g., English, Arabic)" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+
+                    <select id="langLevel" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                        <option value="Native">Native</option>
+                    </select>
+                </div>
+
+                <!-- Add Button -->
+                <button id="addLangBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-full">
+                    + Add Language
+                </button>
+
+                <!-- Language List -->
+                <div id="langList" class="mt-6 space-y-3">
+                    <!-- Dynamic list -->
                 </div>
             </div>
             <!-- step 7 :Interseet -->
             <div class="step hidden">
-                <h2 class="text-2xl font-semibold mb-4">Your Interestes</h2>
-                <div class="border rounded-lg p-4 bg-gray-50">
-                    <p class="text-gray-700">hobbies</p>
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800">Interests</h2>
+
+                <!-- Input and Add Button -->
+                <div class="flex items-center gap-2 mb-4">
+                    <input id="interestInput" type="text" placeholder="Enter an interest (e.g., Reading, Football, Design)" class="border rounded-lg p-2 w-full focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+                    <button id="addInterestBtn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-full">+ Add</button>
+                </div>
+
+                <!-- Interests List -->
+                <div id="interestList" class="flex flex-wrap gap-2 mt-4">
+                    <!-- Dynamic interests will appear here -->
                 </div>
             </div>
             <!-- Step 8 : preview -->
@@ -290,8 +331,8 @@
                 <div class="border rounded-lg p-4 bg-gray-50">
                     <p class="text-gray-700">templates</p>
                 </div>
+                <button id="downloadPDF" class="bg-green-600 text-white px-4 py-2 rounded-full mt-4"> Download PDF</button>
             </div>
-
             <!-- Navigation Buttons -->
             <div class="flex justify-between mt-8">
                 <button type="button" id="prevBtn" class="bg-gray-400 text-white px-4 py-2 rounded-full disabled:opacity-50">
