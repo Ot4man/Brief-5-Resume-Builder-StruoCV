@@ -40,6 +40,21 @@
         interests: []
     };
     ///////////////////////////////////////////////////////////////////////////////////////////
+    // Get the container
+    const container = document.getElementById("previewlist");
+
+    // Add test data
+    container.innerHTML = `
+    <p><strong>Name:</strong> *Otman mellouki</p>
+    <p><strong>Email:</strong> hhhhhh@example.com</p>
+    <p><strong>Phone:</strong> +1234567890</p>
+    <p><strong>Address:</strong> 123 Main St, City, 12345</p>
+    <p><strong>Date of Birth:</strong> 01/01/1990</p>
+    <p><strong>Place of Birth:</strong> City</p>
+    <p><strong>LinkedIn:</strong> linkedin.com/johndoe</p>
+    <p><strong>Portfolio:</strong> johndoe.com</p>
+    <p><strong>Social:</strong> @johndoe</p>
+`;
 
 
     ///////////////////////
@@ -190,7 +205,7 @@
             jobTitle: document.getElementById("jobtitle").value.trim(),
             startDate: document.getElementById("startdate").value.trim(),
             endDate: document.getElementById("endDate").value.trim(),
-            jobDescription: quill.root.innerHTML
+            jobDescription: quill.root.innerHTML // Save Quill content
         };
 
         cvData.experience.push(experienceEntry);
@@ -204,55 +219,9 @@
         });
     }
 
-    function saveCertifications() {
-        cvData.certifications = [];
-        const certElements = certList.querySelectorAll("div > div");
-        certElements.forEach(cert => {
-            const [name, org, date] = cert.querySelectorAll("p");
-            cvData.certifications.push({
-                name: name.textContent,
-                org: org.textContent,
-                date: date.textContent
-            });
-        });
-    }
 
-    function saveLanguages() {
-        cvData.languages = [];
-        const langElements = langlist.querySelectorAll("div > p");
-        for (let i = 0; i < langElements.length; i += 2) {
-            cvData.languages.push({
-                name: langElements[i].textContent,
-                level: langElements[i + 1].textContent
-            });
-        }
-    }
 
-    function saveInterests() {
-        cvData.interests = [];
-        const interestElements = inteerslist.querySelectorAll("span");
-        interestElements.forEach(interest => {
-            cvData.interests.push(interest.textContent);
-        });
-    }
 
-    function saveAllData() {
-        savePersonalInfo();
-        saveEducation();
-        saveExperience();
-        saveSkills();
-        saveCertifications();
-        saveLanguages();
-        saveInterests();
-
-        // localStorage
-        localStorage.setItem("cvData", JSON.stringify(cvData));
-        console.log("CV Data saved:", cvData);
-        alert("All CV data saved successfully!");
-    }
-
-    const savedData = JSON.parse(localStorage.getItem("cvData"));
-    console.log(savedData);
 
 
     saveeducation.addEventListener("click", function() {
@@ -452,11 +421,11 @@
             currentStep++;
             showStep();
         } else {
-            saveAllData();
             alert("Form submited");
+            console.log(" form data:", cvData);
         }
     });
-    // saveAllData();
+
     // -------------
     // nextBtn.addEventListener("click", () => {
     //     const emailI = document.getElementById("email").value.trim()
